@@ -5,7 +5,7 @@ const Routes = [
 ]
 
 const site = {
-	title: "Alex Muro",
+	
 	Routes
 }
 
