@@ -15,7 +15,7 @@ import {
   falcorGraph,
   addComponents,
   addWrappers
-} from "modules/avl-components/src"
+} from "@availabs/avl-components"
 
 
 import DmsComponents from "modules/dms"

@@ -275,7 +275,7 @@ const ppdaf = () => {
             }
 
             let sizes  = { 
-                base: 'px-4 py-4 leading-5 font-medium',
+                base: 'px-1 py-1 leading-5 font-medium',
                 sm: 'text-sm px-2 py-2 leading-5 font-medium',
                 lg: 'text-lg px-6 py-6 leading-5 font-medium',
                 xl: 'text-2xl px-12 py-8 leading-5 font-medium'

@@ -310,7 +310,7 @@ const config = [
     path: "/",
     exact: true,
     auth: false,
-    component: Home
+    component: () => <div>Test 123</div>
   }
 ]
 
