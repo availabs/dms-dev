@@ -1,14 +1,14 @@
-## Transport NY
-https://transportny.org
+## DMS development
 
-AVAILabs client for TransportNY platform.
+
+AVAILabs repository for working on DMS implimentations
 
 ##### Installation
 
 ```
 
- $ git clone git@github.com:availabs/transportNY.git 
- $ cd transportNY
+ $ git clone git@github.com:availabs/dms-dev.git 
+ $ cd dms-dev
  $ git submodule init
  $ git submodule update
  $ npm install
