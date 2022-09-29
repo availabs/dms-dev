@@ -143,7 +143,7 @@ const Blog = {
         return (<div>Test 123</div>)
       },
       props: { dmsAction: "list" }
-    
+
     },
 // dms-manager children are special
 // they are only shown when the dms-manager state.stack.top.action === child.props.dmsAction
@@ -170,7 +170,7 @@ const Blog = {
       }
     },
 
-     { type: "dms-card",
+    { type: "dms-card",
       props: { dmsAction: "view" },
       wrappers: [
         { type: "dms-view",
@@ -230,7 +230,7 @@ const Blog = {
               seedProps: props => {
 // these ids are sent to the api:delete function
                 const postId = +get(props, ["blog-post", "id"], null),
-                  posts = get(props, "dataItems", []).map(d => ({ id: +d.id, replyTo: +d.data.replyTo }));
+                    posts = get(props, "dataItems", []).map(d => ({ id: +d.id, replyTo: +d.data.replyTo }));
 
                 const getReplies = (posts, id, final) => {
                   const replies = posts.filter(d => d.replyTo === id);
@@ -254,47 +254,50 @@ const Blog = {
 }
 
 const Home = {
-  type: (props) => <div>{props.children}</div>,  // top level component for managing data items
+  type: "dms-content", // (props) => <div>{props.children}</div>,  // top level component for managing data items
   wrappers: [
     "dms-manager",
     "dms-provider",
-    
     "dms-router",
     "show-loading",
     "dms-falcor",
     "with-auth"
   ],
   props: {
-    format: format,
-    className: ""
+    format: BLOG_POST,
+    className: "",
   },
   children: [
-      
-   
-    { 
-      type: "dms-card",
-      props: { dmsAction: "delete" },
-      wrappers: [
-        { type: "dms-view",
-          options: {
-            mapDataToProps: {
-              title: "item:data.page",
-              body: [
-                "item:data.page",
-                
-              ],
-              footer: [
-                "item:updated_at"
-              ]
-            }
-            
-          }
-        },
-        "with-auth"
+    { type: "dms-landing",
+      props: { dmsAction: "list" },
+      children: [
+        {
+          type: "dms-card",
+          props: { dmsAction: "view" },
+          wrappers: [
+            { type: "dms-view",
+              options: {
+              type: 'blog-post',
+                mapDataToProps: {
+                  title: "item:data.title",
+                  body: [
+                    "item:data.bloggerId",
+                    "item:data.body",
+                    "item:data.tags",
+                  ],
+                  footer: [
+                    "item:updated_at"
+                  ]
+                },
+              }
+            },
+            "with-auth"
+          ]
+        }
       ]
-    }
+    },
   ]
-  
+
 }
 
 const config = [
@@ -310,7 +313,7 @@ const config = [
     path: "/",
     exact: true,
     auth: false,
-    component: () => <div>go to /blog</div>
+    component: Home
   }
 ]
 
