@@ -145,6 +145,34 @@ const Blog = {
       props: { dmsAction: "list" }
 
     },
+    { type: "dms-landing",
+      props: { dmsAction: "landing" },
+      children: [
+        {
+          type: "dms-card",
+          props: { dmsAction: "view" },
+          wrappers: [
+            { type: "dms-view",
+              options: {
+                type: 'blog-post',
+                mapDataToProps: {
+                  title: "item:data.title",
+                  body: [
+                    "item:data.bloggerId",
+                    "item:data.body",
+                    "item:data.tags",
+                  ],
+                  footer: [
+                    "item:updated_at"
+                  ]
+                },
+              }
+            },
+            "with-auth"
+          ]
+        }
+      ]
+    },
 // dms-manager children are special
 // they are only shown when the dms-manager state.stack.top.action === child.props.dmsAction
     { type: "dms-table",
@@ -268,6 +296,29 @@ const Home = {
     className: "",
   },
   children: [
+    { type: "dms-table",
+      props: {
+        dmsAction: "list",
+        columns: [
+          { path: "self:data.title",
+            filter: "fuzzyText"
+          },
+          "self:data.bloggerId",
+          { path: "self:updated_at",
+            format: "date",
+            disableFilters: true
+          },
+          "dms:edit",
+          "dms:delete"
+        ],
+        filter: {
+          args: ["self:data.replyTo"],
+          comparator: arg1 => !Boolean(arg1),
+          sortType: d => new Date(d).valueOf()
+        }
+      }
+    },
+
     { type: "dms-landing",
       props: { dmsAction: "list" },
       children: [
@@ -303,16 +354,16 @@ const Home = {
 const config = [
   {
     name:'Blog',
-    path: "/blog",
+    path: "/",
     auth: true,
     authLevel: 5,
     component: Blog
   },
   {
     name:'Home',
-    path: "/",
+    path: "/home",
     exact: true,
-    auth: false,
+    auth: true,
     component: Home
   }
 ]
