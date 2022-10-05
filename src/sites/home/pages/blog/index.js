@@ -137,7 +137,11 @@ const Blog = {
   props: { format: BLOG_POST },
   children: [
     { type: "dms-header",
-      props: { title: "Blog it Up" }
+      props: {
+      title: "Blog it Up",
+        dmsActions: [{ action: "page:landing", label: 'landing' }],
+        // dmsAction: 'list'
+    }
     },
     { type: (props) => {
         return (<div>Test 123</div>)
@@ -146,7 +150,7 @@ const Blog = {
 
     },
     { type: "dms-landing",
-      props: { dmsAction: "landing" },
+      props: { dmsAction: "page:landing" },
       children: [
         {
           type: "dms-card",
