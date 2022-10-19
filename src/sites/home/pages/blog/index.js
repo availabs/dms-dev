@@ -4,6 +4,7 @@ import React from 'react';
 import PageView from './components/PageView'
 import ListView from './components/ListView'
 import AdminHeader from './components/AdminHeader'
+import AuthMenu from 'pages/Auth/AuthMenu'
 
 import get from 'lodash.get'
 
@@ -71,6 +72,10 @@ export const BLOG_POST = {
     { key: 'tags',
       type: 'text',
       isArray: true
+    },
+    { key: "url_slug",
+      type: "text",
+      required: false
     },
     { key: "bloggerId",
       name: "Blogger ID",
@@ -141,7 +146,14 @@ const Blog = {
       title: "Blog it Up",
         dmsActions: [{ action: "landing", label: 'landing' }],
         // dmsAction: 'list'
-    }
+      },
+      children: [
+        {type:
+          <div>
+            <AuthMenu />
+          </div>
+        }
+      ]
     },
     { type: (props) => {
         return (<div>Test 123</div>)
