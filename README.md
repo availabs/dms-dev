@@ -26,3 +26,13 @@ AVAILabs repository for working on DMS implementations
  $ git submodule foreach git pull origin master
 
 ```
+
+##### Detached Submodule Head, fix issues with master
+
+```
+
+ $ git branch my-temporary-work
+ $ git checkout master
+ $ git merge my-temporary-work
+ 
+```

@@ -10,7 +10,7 @@ import {/* getDomain, */ getSubdomain} from 'utils'
 import {
   DefaultLayout,
   Messages
-} from "@availabs/avl-components"
+} from "modules/avl-components/src"
 
 import home from 'sites/home'
 

@@ -139,7 +139,7 @@ const Blog = {
     { type: "dms-header",
       props: {
       title: "Blog it Up",
-        dmsActions: [{ action: "page:landing", label: 'landing' }],
+        dmsActions: [{ action: "landing", label: 'landing' }],
         // dmsAction: 'list'
     }
     },
@@ -150,7 +150,7 @@ const Blog = {
 
     },
     { type: "dms-landing",
-      props: { dmsAction: "page:landing" },
+      props: { dmsAction: "landing" },
       children: [
         {
           type: "dms-card",
@@ -360,7 +360,7 @@ const config = [
     name:'Blog',
     path: "/",
     auth: true,
-    authLevel: 5,
+    // authLevel: 5,
     component: Blog
   },
   {

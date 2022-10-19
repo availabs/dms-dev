@@ -203,6 +203,38 @@ const ppdaf = () => {
       }
     },
 
+      input: (opts = {}) => {
+          const {color = 'gray', size = 'small', width = 'block'} = opts
+          let colors = {
+              white: 'bg-white',
+              gray: 'bg-gray-100'
+          }
+
+          let sizes  = {
+              base: 'px-4 py-4 font-medium',
+              small: 'text-sm px-2 py-2 font-medium text-xs',
+              large: 'text-lg px-6 py-6 font-medium text-xl'
+          }
+
+          let widths = {
+              'block': '',
+              'full' : 'w-full'
+          }
+
+          return {
+              input: `
+              border border-1 border-gray-300 rounded
+              shadow-inner focus:outline-none focus:ring-1 focus:border-blue-300 focus:shadow-tigShadow focus:shadow-blue-400
+              ${colors[color]} ${sizes[size]} ${widths[width]}
+                `,
+              vars: {
+                  color: colors,
+                  size: sizes,
+                  width: widths
+              }
+          }
+      },
+
     table: (opts = {}) => {
             const {color = 'white', size = 'compact'} = opts
             let colors = {
