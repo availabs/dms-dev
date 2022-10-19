@@ -372,7 +372,7 @@ const config = [
     name:'Blog',
     path: "/",
     auth: true,
-    // authLevel: 5,
+    authLevel: 5,
     component: Blog
   },
   {

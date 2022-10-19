@@ -30,13 +30,14 @@ const App = (props) => {
   const Routes =  useMemo(() => {
     return [...site.Routes, ...DefaultRoutes ]
   }, [site])
-
+    console.log(site, Routes)
   return (
     <BrowserRouter basename={process.env.REACT_APP_PUBLIC_URL}>
       <ScrollToTop />
       <Switch>
         { Routes.map((route, i) =>
-            <DefaultLayout 
+            <DefaultLayout
+                home={'/'}
               site={site.title} 
               layout={'Simple'} 
               key={ i }
